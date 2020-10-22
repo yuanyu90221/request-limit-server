@@ -1,0 +1,26 @@
+{
+  "name": "request-limit-server",
+  "version": "1.0.0",
+  "description": "request limit server with redis",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test_t": "jest -t",
+    "run_server": "nodemon server/server"
+  },
+  "keywords": [],
+  "author": "yuanyulaing",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "dotenv": "^8.2.0",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-favicon": "^2.1.0",
+    "koa-router": "^9.4.0"
+  },
+  "devDependencies": {
+    "jest": "^26.6.0",
+    "nodemon": "^2.0.6"
+  }
+}
