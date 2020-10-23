@@ -4,7 +4,7 @@
   "description": "request limit server with redis",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --forceExit",
     "test_t": "jest -t",
     "run_server": "nodemon server/server"
   },
@@ -16,8 +16,10 @@
     "dotenv": "^8.2.0",
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
+    "koa-ejs": "^4.3.0",
     "koa-favicon": "^2.1.0",
-    "koa-router": "^9.4.0"
+    "koa-router": "^9.4.0",
+    "redis": "^3.0.2"
   },
   "devDependencies": {
     "jest": "^26.6.0",

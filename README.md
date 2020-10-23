@@ -29,3 +29,5 @@ I use docker to wrap my request-limit-server and redis with docker
 ## pre-installl
 1 Need first have docker install
 2 Need use docker-compose, thus docker-compose cli install is needed
+## reference 
+[LUA control ip](https://zhuanlan.zhihu.com/p/77484377)

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Limit Page</title>
+</head>
+<body>
+    <% if (error !== null)  {%>
+        Error: <%- error.message %>
+        HttpStatus: <%- error.status %>
+    <% } else {%>
+        Client IP: <%- ip %>
+        Request Count: <%-count %>
+    <% }%>
+</body>
+</html>

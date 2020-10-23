@@ -1,5 +1,6 @@
 const Koa = require('koa');
 const cors = require('@koa/cors');
+const render = require('koa-ejs');
 const bodyParser = require('koa-bodyparser');
 const favicon = require('koa-favicon');
 const path = require('path');
@@ -15,4 +16,12 @@ app.use(loggerMiddleware);
 app.use(errorHandler);
 app.use(routers.routes());
 app.use(notFoundRouter.routes());
+render(app, {
+    root: path.join(__dirname, 'views'),
+    layout: false,
+    viewExt: 'html',
+    cache: false,
+    debug: true
+})
+app.proxy = true;
 module.exports = app;

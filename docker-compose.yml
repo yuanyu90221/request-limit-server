@@ -13,5 +13,23 @@ services:
     environment:
       - REDIS_PASSWORD=${REDIS_PASSWORD}
       - REDIS_PORT=${REDIS_PORT}
+    
+  request_limit_server:
+    build: .
+    container_name: 'request_limit_server'
+    ports:
+      - ${PORT}:${PORT}
+    networks:
+      - backend
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - REDIS_EXPIRE_TIME=${REDIS_EXPIRE_TIME}
+      - REDIS_LIMIT_IP_COUNT=${REDIS_LIMIT_IP_COUNT}
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - REDIS_PASSWD=${REDIS_PASSWD}
+      - APP_NAME=${APP_NAME}
+      - PORT=${PORT}
+      - IS_RUN_ON_DOCKER=true
 networks:
   backend:
