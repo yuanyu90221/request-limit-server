@@ -1,17 +1,29 @@
+const config= require('../config');
+const isShowLog = config.IS_SHOW_LOG;
 exports.logger={
     log:(...data)=>{
-      console.log(...data);
+      if (isShowLog) {
+        console.log(...data);
+      }
     },
     warn: (...data)=>{
-      console.log(...data);  
+      if (isShowLog) {
+        console.log(...data);
+      }  
     },
     debug:(...data)=>{
-      console.debug(...data);
+      if (isShowLog) {
+       console.debug(...data);
+      }
     },
     info:(...data)=>{
-      console.info(...data);
+      if (isShowLog) {
+        console.info(...data);
+      }
     },
     error:(e)=>{
-      console.error(e);
+      if (isShowLog) {
+        console.error(e);
+      }
     }
   };

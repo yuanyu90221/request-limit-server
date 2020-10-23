@@ -8,12 +8,12 @@ const {logger} = require('../lib/logger');
 const loggerMiddleware = async (ctx, next) =>{
     try {
         await next();
-        let {status, body} = ctx;
+        let {status, body, state} = ctx;
         let message = body.message;
         if (typeof message !== 'string' && message) {
             message = JSON.stringify(message);
         } else {
-            message = message? message: 'no body message';
+            message = message? message: state? JSON.stringify(state):'no body message';
         }
         switch (status) {
             case status >= 500:

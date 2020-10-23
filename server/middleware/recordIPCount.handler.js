@@ -16,7 +16,7 @@ const recordIPCountFunc = async (ctx, next) => {
             } 
             let currentCount = await execLuaScriptSha({sha, ip:client_ip, limit:redisLimitIPCount, expiredTime: redisExpireTime});
             if (currentCount > redisLimitIPCount) {
-                throw new HttpException({status:429, message: `[${ctx.request.path}][${ctx.request.method}]${client_ip} access too much time in ${redisExpireTime}s `, code: ErrCode.RecordIPAccessTooMuchError});
+                throw new HttpException({status:429, message: `[${ctx.request.path}][${ctx.request.method}]${client_ip} access too much time in ${redisExpireTime}s  with  limit ${redisLimitIPCount} and currentCount:${currentCount}`, code: ErrCode.RecordIPAccessTooMuchError});
             }
             ctx.state.client_ip = client_ip;
             ctx.state.currentCount = currentCount;

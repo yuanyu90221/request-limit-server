@@ -21,7 +21,6 @@ app.use(async(ctx, next)=> {
             let {sha} = await loadLuaScript();
             scriptSha = sha;
         }
-        console.log(scriptSha);
         ctx.state.sha = scriptSha;
         await next();
     } catch (err) {

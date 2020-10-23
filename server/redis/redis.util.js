@@ -12,4 +12,14 @@ client.on('error', async(err) => {
 client.on('ready', async()=>{
     logger.info(`[${config.APP_NAME}] with ${config.NODE_ENV} environment Redis connect well!`);
 });
-module.exports={client};
+const flushAll = async () => {
+    return new Promise((resolve, reject)=>{
+        client.flushall((err, res)=>{
+            if (err){
+                return reject(err);
+            }
+            resolve(res);
+        })
+    });
+}
+module.exports={client, flushAll};

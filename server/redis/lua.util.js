@@ -6,7 +6,7 @@ const recordIpCountLua = 'recordIpCount.lua';
 let sha = '';
 const flushLuaScript = async() => {
     return new Promise((resolve, reject) => {
-        client.script('kill', (err, data)=> {
+        client.script('flush', (err, data)=> {
             if (err) {
                 reject(err);
             } else {
