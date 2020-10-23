@@ -7,7 +7,7 @@ COPY  server /app
 
 COPY package.json /app
 
-WORKDIR /app
+WORKDIR /app/
 
 RUN npm install
 
@@ -59,4 +59,4 @@ EXPOSE ${PORT}
 
 WORKDIR /app
 
-CMD ["node", "server.js"]
+CMD ["node", "server/server.js"]

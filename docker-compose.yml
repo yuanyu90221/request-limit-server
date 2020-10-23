@@ -11,7 +11,7 @@ services:
     networks:
       - backend
     environment:
-      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_PASSWD=${REDIS_PASSWD}
       - REDIS_PORT=${REDIS_PORT}
     
   request_limit_server:
