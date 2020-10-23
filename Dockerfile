@@ -3,9 +3,7 @@ FROM node:10.18.0 AS builder
 
 RUN mkdir /app
 
-COPY  server /app
-
-COPY package.json /app
+COPY  .  /app
 
 WORKDIR /app/
 

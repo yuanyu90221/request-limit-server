@@ -13,14 +13,14 @@ const loggerMiddleware = async (ctx, next) =>{
         if (typeof message !== 'string' && message) {
             message = JSON.stringify(message);
         } else {
-            message = 'no body message';
+            message = message? message: 'no body message';
         }
         switch (status) {
             case status >= 500:
-                logger.error(`[${ctx.request.method}][${ctx.request.path}] status: ${body.status}, message: ${body.message}, errCode: ${body.errCode}`)
+                logger.error(`[${ctx.request.method}][${ctx.request.path}] status: ${status}, message: ${body.message}, errCode: ${body.errCode}`)
                 break;
             case status >= 400:
-                logger.warn(`[${ctx.request.method}][${ctx.request.path}] status: ${body.status}, message: ${body.message}, errCode: ${body.errCode}`);
+                logger.warn(`[${ctx.request.method}][${ctx.request.path}] status: ${status}, message: ${body.message}, errCode: ${body.errCode}`);
                 break;
             default:
                 logger.info(`[${ctx.request.method}][${ctx.request.path}] status: ${status}, message: ${message}`);

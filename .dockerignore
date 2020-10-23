@@ -1,0 +1,6 @@
+node_modules
+data
+dockerfiles
+__test__
+.env
+my-redis

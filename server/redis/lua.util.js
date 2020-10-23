@@ -51,7 +51,7 @@ const execLuaScriptSha = async ({sha, ip, limit, expiredTime}) =>{
             if (err) {
                 reject(err);
             }
-            console.log('executeLuaScriptSha result:', result);
+            logger.info('executeLuaScriptSha result:', result);
             resolve(result);
         })
     });
