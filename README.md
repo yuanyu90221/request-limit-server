@@ -68,7 +68,16 @@ siege -c 60 -r1 http://127.0.0.1:7788 -v
 ```
 and next request should be response with http status code:429
 ```shell=
-siege -c 1 -r1 http://127.0.0.1:7788
+siege -c 1 -r1 http://127.0.0.1:7788 -v
+```
+4 test local for local deployed machine with port 7788 with file
+first 60 request should be response with http status code:200
+```shell=
+siege -c 60 -r1  -f siege_file_local_docker  -v
+```
+and next request should be response with http status code:429
+```shell=
+siege -c 1 -r1 -f siege_file_local_docker -v
 ```
 ## set up redis for redis Lab
 for example my setup

@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --forceExit",
     "test_t": "jest -t",
-    "run_server": "nodemon server/server"
+    "run_server": "nodemon server/server",
+    "start": "node  server/server.js"
   },
   "keywords": [],
   "author": "yuanyulaing",
