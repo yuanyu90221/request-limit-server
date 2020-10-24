@@ -29,8 +29,22 @@ I seldomly use LUA script in production service so this is a task for me
 **Notice**
 I use docker to wrap my request-limit-server and redis with docker 
 ## pre-installl
-1 Need first have docker install
-2 Need use docker-compose, thus docker-compose cli install is needed
+### For Dcoker Deploy and test(if you use Docker)
+[install doc](https://docs.docker.com/desktop/)
+1. Need first have docker install
+2. Need use docker-compose, thus docker-compose cli install is needed
+
+### For siege test(Recommanded) 
+1. siege
+### siege install step
+#### Linux
+```shell=
+sudo apt-get install siege
+```
+#### Mac OS
+```shell=
+brew install siege
+```
 ## reference 
 [LUA control ip](https://zhuanlan.zhihu.com/p/77484377)
 
