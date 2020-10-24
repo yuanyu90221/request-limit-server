@@ -16,12 +16,14 @@ use LUA to access to the redis
 
 ## chanllenges for this tasks 
 
-1 Get User IP from Request info
+1. Get User IP from Request info
 Need to know The real Request IP in Header's attribute
-2 Race condition for access the redis
+
+2. Race condition for access the redis
 if we not use LUA to make sure the update request number operaction
 then this will happen when we make multiple update request number operations to redis at the same time
-3 Learn LUA script
+
+3. Learn LUA script
 I seldomly use LUA script in production service so this is a task for me
 
 **Notice**
