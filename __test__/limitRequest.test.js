@@ -16,13 +16,7 @@ test('limitRequestTest',async done => {
     const statusOKCount = resultArr.filter(item => item.statusCode===200).length;
     expect(statusOKCount).toBe(60);
     expect(nextRequest.status).toBe(429);
-    // done();
+    res = await flushAll();
+    console.log(res);
     client.quit(done());
 });
-beforeAll(async done =>{
-    // await removeKey(request.serverAddress);
-   done();
-});
-afterAll(async done =>{
-    client.quit(done());
- });

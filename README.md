@@ -79,7 +79,7 @@ and next request should be response with http status code:429
 ```shell=
 siege -c 1 -r1 -f siege_file_local_docker -v
 ```
-## set up redis for redis Lab
+## set up redis for redis Lab(Highly recommand easy to setup and test)
 for example my setup
 ```shell=
 REDIS_PASSWD=dob770407
@@ -92,3 +92,52 @@ REDIS_EXPIRE_TIME=60
 REDIS_LIMIT_IP_COUNT=60
 IS_RUN_ON_DOCKER=false
 ```
+## heroku deploy
+1. first login
+```shell=
+heroku login
+```
+2. create heroku repo
+```shell=
+heroku create
+```
+3. git push -u heroku master
+```shell=
+git push -u heroku master
+```
+4. set up the  config var for all my .env
+```shell=
+REDIS_PASSWD=dob770407
+REDIS_PORT=19635
+REDIS_HOST=redis-19635.c54.ap-northeast-1-2.ec2.cloud.redislabs.com
+NODE_ENV=dev
+APP_NAME=request-limit-server
+PORT=7788
+REDIS_EXPIRE_TIME=60
+REDIS_LIMIT_IP_COUNT=60
+IS_RUN_ON_DOCKER=false
+```
+this must be done due to I separate this setting into environment variable
+
+then you could got your heroku uri
+
+for my deploy
+
+is https://pacific-island-71307.herokuapp.com
+## test on siege with heroku
+1. paste your heroku uri on siege_file_on_deployed_heroku
+```shell=
+https://pacific-island-71307.herokuapp.com
+```
+2. run test with file
+first request 60 time should be response with http status 200
+```shell=
+siege -c 60 -r1 -f siege_file_on_deployed_heroku -v
+```
+next request should should be response with http status 429
+```shell=
+siege -c 1 -r1 -f siege_file_on_deployed_heroku -v
+```
+***Notice***
+siege must be install first
+[siege document](https://github.com/JoeDog/siege) 
