@@ -10,5 +10,5 @@ module.exports = {
     REDIS_EXPIRE_TIME: (isNaN(process.env.REDIS_EXPIRE_TIME))? 60:Number(process.env.REDIS_EXPIRE_TIME),
     REDIS_LIMIT_IP_COUNT: (isNaN(process.env.REDIS_LIMIT_IP_COUNT))? 60:Number(process.env.REDIS_LIMIT_IP_COUNT),
     IS_RUN_ON_DOCKER: process.env.IS_RUN_ON_DOCKER === "true",
-    IS_SHOW_LOG: process.env.IS_SHOW_LOG==="true"
+    IS_SHOW_LOG: process.env.IS_SHOW_LOG? process.env.IS_SHOW_LOG==="true": true
 }
