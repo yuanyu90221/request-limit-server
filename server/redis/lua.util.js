@@ -40,7 +40,6 @@ const checkLoadScript = async (sha) => {
            if (err) {
                reject(err);
            }
-           logger.info(`checkLoadScript result`, result);
            resolve({isExist:result[0]===1});
        })
     })
@@ -51,7 +50,6 @@ const execLuaScriptSha = async ({sha, ip, limit, expiredTime}) =>{
             if (err) {
                 reject(err);
             }
-            logger.info('executeLuaScriptSha result:', result);
             resolve(result);
         })
     });

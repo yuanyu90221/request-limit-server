@@ -7,7 +7,7 @@ const errorMiddleware = async (ctx, next) => {
         const message = err.client_message? err.client_message: err.message ?err.message : 'something went wrong, please contact us';
         const errCode = err.code ? err.code: ErrCode.Unknown;
         ctx.status = status;
-        ctx.body = {message, errCode, status: 'failed'};
+        ctx.body = {message, errCode, status: err.status};
         ctx.state.errorCode = err.code ? err.code: ErrCode.Unknown;
     }
 }

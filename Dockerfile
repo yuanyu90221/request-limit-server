@@ -1,11 +1,13 @@
 # stage 1 build the code
 FROM node:10.18.0 AS builder
 
-RUN mkdir /app
+RUN mkdir -p app/server
 
-COPY  .  /app
+COPY server app/server
 
-WORKDIR /app/
+COPY  package.json  app
+
+WORKDIR  app/
 
 RUN npm install
 
@@ -27,6 +29,8 @@ ARG REDIS_LIMIT_IP_COUNT
 
 ARG IS_RUN_ON_DOCKER
 
+ARG IS_SHOW_LOG
+
 ENV NODE_ENV=${NODE_ENV}
 
 ENV APP_NAME=${APP_NAME}
@@ -44,17 +48,19 @@ ENV REDIS_EXPIRE_TIME=${REDIS_EXPIRE_TIME}
 ENV REDIS_LIMIT_IP_COUNT=${REDIS_LIMIT_IP_COUNT}
 
 ENV IS_RUN_ON_DOCKER=${IS_RUN_ON_DOCKER}
+
+ENV IS_SHOW_LOG=${IS_SHOW_LOG}
 #stage 2 
 FROM node:10.18.0
 
-COPY --from=builder /app ./app
+COPY  --from=builder app ./app
 
-RUN chown -R node:node /app
+RUN chown -R node:node app
 
 USER node
 
 EXPOSE ${PORT}
 
-WORKDIR /app
+WORKDIR app
 
 CMD ["node", "server/server.js"]

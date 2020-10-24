@@ -32,6 +32,7 @@ services:
       - APP_NAME=${APP_NAME}
       - PORT=${PORT}
       - IS_RUN_ON_DOCKER=true
+      - IS_SHOW_LOG=true
     depends_on:
       - redis
 
