@@ -1,6 +1,5 @@
 # stage 1 build the code
 FROM node:10.18.0 AS builder
-
 RUN mkdir -p app/server
 COPY server app/server
 COPY  package.json  app
@@ -25,16 +24,10 @@ ENV REDIS_EXPIRE_TIME=${REDIS_EXPIRE_TIME}
 ENV REDIS_LIMIT_IP_COUNT=${REDIS_LIMIT_IP_COUNT}
 ENV IS_RUN_ON_DOCKER=${IS_RUN_ON_DOCKER}
 #stage 2 
-FROM node:10.18.0
-
+FROM node:10.18.0-alpine
 COPY  --from=builder app ./app
-
 RUN chown -R node:node app
-
 USER node
-
 EXPOSE ${PORT}
-
 WORKDIR app
-
 CMD ["node", "server/server.js"]
