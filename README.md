@@ -20,7 +20,7 @@ use LUA to access to the redis
 Need to know The real Request IP in Header's attribute
 
 2. Race condition for access the redis
-if we not use LUA to make sure the update request number operaction
+if we not use LUA to make sure the update request number operaction atomic
 then this will happen when we make multiple update request number operations to redis at the same time
 
 3. Learn LUA script
@@ -50,6 +50,7 @@ brew install siege
 
 ## Run on Dcoker
 not recommand for someone not familar with docker
+
 1 setup .env for dokcer
 ```shell=
 REDIS_PASSWD=3719a9efc9d55190eee8285bcc66ea2e0ef5d36db87427d7e862e504df435f0b
@@ -73,6 +74,7 @@ if you use redis on Docker and try to use  my default supertest on request_limit
 do change the IS_RUN_DOCKER=false in .env file
 
 because the supertest is not run in the docker with same network with redis
+
 2 run test with supertest
 ```shell=
 npm run test
